@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij.platform' version '2.3.0'
+}
+
+group = 'org.Roshan'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+
+    intellijPlatform {
+        defaultRepositories()
+    }
+}
+
+dependencies {
+    implementation 'org.springframework:spring-context:6.1.14'
+    implementation 'org.springframework:spring-beans:6.1.14'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity('2024.1')
+
+        bundledPlugin 'com.intellij.java'
+    }
+}
+
+patchPluginXml {
+    sinceBuild = '241'
+    untilBuild = '242.*'
+}
+
+
+test {
+    useJUnitPlatform()
+}

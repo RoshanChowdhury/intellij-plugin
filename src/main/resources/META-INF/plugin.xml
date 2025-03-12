@@ -1,0 +1,49 @@
+<idea-plugin>
+    <id>org.Roshan.spring-xml-converter</id>
+    <name>XML to Annotation Converter</name>
+    <vendor>RoshanChowdhury</vendor>
+    <description>Converts legacy Spring XML configurations to Java-based annotations</description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow id="Spring Migrator"
+                    anchor="right"
+                    factoryClass="com.example.migrator.MigratorToolWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <!-- <action id="ConvertXmlToAnnotation"
+                 class="org.Roshan.XmlToAnnotationActionMain"
+                 text="XML to Annotations"
+                 description="Converts Spring XML configuration to Annotations">
+             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+         </action>-->
+
+        <!-- Create a group for dropdown -->
+        <group id="MyPlugin.MainMenu"
+               text="XML to Annotations"
+               description="XML Migration menu"
+               popup="true">
+
+            <!-- Add this group to the main menu -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
+            <!-- First Action -->
+            <action id="ConvertSpringXmlToAnnotation"
+                    class="org.Roshan.SpringXmlToAnnotationsAction"
+                    text="Spring XML to Annotations"
+                    description="Converts Spring XML configuration to Annotations">
+            </action>
+
+            <!-- Second Action -->
+            <action id="ConvertHibernateXmlToAnnotation"
+                    class="org.Roshan.HibernateXmlToAnnotationsAction"
+                    text="Hibernate XML to Annotations"
+                    description="Converts Hibernate XML configuration to Annotations">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
